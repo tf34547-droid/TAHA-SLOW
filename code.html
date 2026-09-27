@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAHA SLOW | دنیای تکنولوژی، گیم و سرگرمی</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Vazirmatn & Orbitron for futuristic gaming numbers -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&amp;family=Vazirmatn:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', 'sans-serif'],
+            display: ['Orbitron', 'Vazirmatn', 'sans-serif']
+          },
+          colors: {
+            cyber: {
+              dark: '#070814',
+              card: 'rgba(15, 17, 35, 0.75)',
+              border: 'rgba(139, 92, 246, 0.25)',
+              purple: '#9333ea',
+              neonPurple: '#c084fc',
+              cyan: '#06b6d4',
+              neonCyan: '#22d3ee',
+              magenta: '#ec4899',
+              orange: '#f97316'
+            }
+          },
+          boxShadow: {
+            'neon-purple': '0 0 25px -5px rgba(168, 85, 247, 0.5), 0 0 10px -2px rgba(168, 85, 247, 0.3)',
+            'neon-cyan': '0 0 25px -5px rgba(6, 182, 212, 0.5), 0 0 10px -2px rgba(6, 182, 212, 0.3)',
+            'neon-badge': '0 0 15px rgba(147, 51, 234, 0.35)',
+            'glow-card': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom styles for cyberpunk glow effects -->
+<style data-purpose="glow-effects">
+    .text-glow-purple {
+      text-shadow: 0 0 12px rgba(192, 132, 252, 0.75), 0 0 25px rgba(147, 51, 234, 0.5);
+    }
+    .text-glow-cyan {
+      text-shadow: 0 0 12px rgba(34, 211, 238, 0.75), 0 0 25px rgba(6, 182, 212, 0.5);
+    }
+    .glass-panel {
+      background: linear-gradient(135deg, rgba(25, 22, 54, 0.65) 0%, rgba(10, 11, 28, 0.85) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(34, 211, 238, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -8px rgba(34, 211, 238, 0.25);
+    }
+    /* Grid background pattern */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(147, 51, 234, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(147, 51, 234, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-[#05060d] text-slate-100 font-sans antialiased selection:bg-purple-600 selection:text-white relative overflow-x-hidden cyber-grid">
+<!-- Ambient background glow elements -->
+<div class="fixed top-0 right-1/4 -z-10 w-96 h-96 bg-purple-900/30 rounded-full blur-[130px] pointer-events-none"></div>
+<div class="fixed top-1/3 left-10 -z-10 w-80 h-80 bg-cyan-900/25 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="fixed bottom-20 right-10 -z-10 w-[30rem] h-[30rem] bg-indigo-950/40 rounded-full blur-[160px] pointer-events-none"></div>
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-[#060814]/85 border-b border-purple-500/15 transition-all">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo TS TAHA SLOW -->
+<a class="flex items-center gap-3 group" data-purpose="site-logo" href="#">
+<div class="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-[2px] shadow-neon-purple transition-transform group-hover:scale-105">
+<div class="w-full h-full bg-[#090b1c] rounded-[10px] flex items-center justify-center">
+<span class="font-display font-black text-2xl tracking-tighter bg-gradient-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">TS</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-display font-black text-xl tracking-wider bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+            TAHA <span class="text-cyan-400">SLOW</span>
+</span>
+<span class="text-[10px] text-purple-300/70 tracking-widest font-medium -mt-1">GAMING &amp; TECH HUB</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu -->
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300" data-purpose="main-nav">
+<a class="text-cyan-400 relative py-2 after:content-[''] after:absolute after:bottom-0 after:inset-x-0 after:h-0.5 after:bg-cyan-400 after:shadow-[0_0_8px_#22d3ee]" href="#">خانه</a>
+<a class="hover:text-purple-300 transition-colors py-2" href="#videos">ویدیوها</a>
+<a class="hover:text-purple-300 transition-colors py-2 flex items-center gap-1.5 text-pink-400 font-semibold" href="#download-mod">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
+</span>
+          دانلود مود سن آندرس
+        </a>
+<a class="hover:text-purple-300 transition-colors py-2" href="#services">خدمات</a>
+<a class="hover:text-purple-300 transition-colors py-2" href="#about">درباره من</a>
+<a class="hover:text-purple-300 transition-colors py-2" href="#contact">تماس</a>
+</nav>
+<!-- Quick Social Badges (Aparat & Rubika) -->
+<div class="flex items-center gap-3" data-purpose="header-social-actions">
+<!-- Aparat Badge -->
+<a class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 text-xs font-semibold transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(236,72,153,0.35)]" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank" title="کانال آپارات طاها اسلو">
+<svg class="w-4 h-4 text-pink-400" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="none" r="10" stroke="currentColor" stroke-width="2"></circle>
+<polygon fill="currentColor" points="10 8 16 12 10 16 10 8"></polygon>
+</svg>
+<span>آپارات</span>
+</a>
+<!-- Rubika Badge -->
+<a class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-xs font-semibold transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(6,182,212,0.35)]" href="https://rubika.ir/Gtaslow" rel="noopener noreferrer" target="_blank" title="کانال روبیکا @Gtaslow">
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee]"></span>
+<span>روبیکا <span class="text-[10px] text-cyan-200/70 font-mono">@Gtaslow</span></span>
+</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-12 pb-20 md:py-24 overflow-hidden" data-purpose="hero-section">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Headline and Call To Action (in RTL this appears on right side visually) -->
+<div class="lg:col-span-6 space-y-6 text-center lg:text-right">
+<!-- Category Tag Badge -->
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-900/40 border border-purple-500/40 text-purple-300 text-xs font-semibold tracking-wide">
+<span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+<span>تکنولوژی و گیمینگ</span>
+<svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Big Glowing Main Title -->
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+<span class="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">TAHA</span>
+<span class="bg-gradient-to-l from-orange-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(249,115,22,0.4)]">
+                SLOW
+              </span>
+</h1>
+<p class="text-xl sm:text-2xl font-bold text-slate-200 leading-relaxed">
+              دنیای تکنولوژی، گیم و سرگرمی در یک نگاه
+            </p>
+<p class="text-slate-400 text-base max-w-xl mx-auto lg:mx-0 leading-loose">
+              اینجا جدیدترین اخبار، آموزش‌ها، مودهای بازی GTA و ویدیوهای تکنولوژی را با ما تجربه کنید. همیشه یک گام جلوتر از دنیای دیجیتال باشید.
+            </p>
+<!-- Hero Action Buttons -->
+<div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4" data-purpose="hero-cta-buttons">
+<!-- Primary CTA -->
+<a class="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-neon-cyan transition-all transform hover:-translate-y-1" href="#videos">
+<svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+<span>مشاهده محتوا</span>
+</a>
+<!-- Secondary CTA -->
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl glass-panel text-slate-200 hover:text-white hover:border-purple-400/50 font-bold text-sm transition-all transform hover:-translate-y-1" href="#about">
+<span>درباره من</span>
+</a>
+</div>
+<!-- Floating mini stats -->
+<div class="pt-6 grid grid-cols-3 gap-4 border-t border-purple-500/20 max-w-md mx-auto lg:mx-0">
+<div class="text-center lg:text-right">
+<div class="font-display text-2xl font-extrabold text-cyan-400">10K+</div>
+<div class="text-xs text-slate-400">بازدید ویدیوها</div>
+</div>
+<div class="text-center lg:text-right">
+<div class="font-display text-2xl font-extrabold text-purple-400">100+</div>
+<div class="text-xs text-slate-400">آموزش و بررسی</div>
+</div>
+<div class="text-center lg:text-right">
+<div class="font-display text-2xl font-extrabold text-pink-400">24/7</div>
+<div class="text-xs text-slate-400">پوشش تکنولوژی</div>
+</div>
+</div>
+</div>
+<!-- Right Column: 3D Cyber Emblem Visual -->
+<div class="lg:col-span-6 relative flex items-center justify-center" data-purpose="hero-visual">
+<div class="relative w-full max-w-lg aspect-square flex items-center justify-center">
+<!-- Concentric glowing rings -->
+<div class="absolute inset-0 rounded-full border border-purple-500/20 animate-[spin_30s_linear_infinite]"></div>
+<div class="absolute inset-8 rounded-full border border-dashed border-cyan-500/30 animate-[spin_20s_linear_infinite_reverse]"></div>
+<div class="absolute inset-16 rounded-full bg-gradient-to-tr from-purple-600/20 via-pink-600/10 to-cyan-500/20 blur-2xl"></div>
+<!-- Main Futuristic TS 3D Emblem Container -->
+<div class="relative z-10 glass-panel p-8 sm:p-12 rounded-3xl border-2 border-purple-500/40 shadow-neon-purple flex flex-col items-center justify-center transform hover:scale-105 transition-transform duration-500">
+<div class="relative">
+<!-- Stylized Big TS Neon Text Logo -->
+<div class="font-display font-black text-8xl sm:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-white via-purple-300 to-purple-600 filter drop-shadow-[0_10px_20px_rgba(147,51,234,0.8)] tracking-tighter">
+                    TS
+                  </div>
+<!-- Neon lightning bolt accent -->
+<div class="absolute -right-4 -top-2 w-8 h-8 rounded-full bg-cyan-400/80 blur-[6px]"></div>
+</div>
+<div class="mt-4 px-6 py-1.5 rounded-full bg-black/60 border border-cyan-400/40 text-cyan-300 font-display text-sm tracking-widest font-bold shadow-[0_0_12px_rgba(34,211,238,0.4)]">
+                  TAHA SLOW STUDIO
+                </div>
+<!-- Subtle floating labels -->
+<div class="absolute -bottom-4 right-6 bg-[#0f1123] border border-purple-500/40 px-3.5 py-1 rounded-lg text-[11px] text-purple-300 shadow-md">
+                  🎮 GTA &amp; Gaming
+                </div>
+<div class="absolute -top-3 left-6 bg-[#0f1123] border border-cyan-500/40 px-3.5 py-1 rounded-lg text-[11px] text-cyan-300 shadow-md">
+                  ⚡ Tech Reviews
+                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: CategoryNavigation -->
+<section class="relative -mt-6 z-20" data-purpose="category-pills">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 p-3 rounded-2xl glass-panel border border-purple-500/20 shadow-2xl">
+<!-- Category 1: Tech News -->
+<a class="group flex items-center justify-between p-3.5 rounded-xl bg-purple-950/20 hover:bg-purple-900/30 border border-purple-500/20 hover:border-purple-400/60 transition-all" href="#videos">
+<span class="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white">اخبار تکنولوژی</span>
+<div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</a>
+<!-- Category 2: Tutorials -->
+<a class="group flex items-center justify-between p-3.5 rounded-xl bg-cyan-950/20 hover:bg-cyan-900/30 border border-cyan-500/20 hover:border-cyan-400/60 transition-all" href="#videos">
+<span class="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white">آموزش تکنولوژی</span>
+<div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</a>
+<!-- Category 3: Gadgets -->
+<a class="group flex items-center justify-between p-3.5 rounded-xl bg-indigo-950/20 hover:bg-indigo-900/30 border border-indigo-500/20 hover:border-indigo-400/60 transition-all" href="#videos">
+<span class="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white">گجت و گیمینگ</span>
+<div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</a>
+<!-- Category 4: Applications -->
+<a class="group flex items-center justify-between p-3.5 rounded-xl bg-pink-950/20 hover:bg-pink-900/30 border border-pink-500/20 hover:border-pink-400/60 transition-all" href="#videos">
+<span class="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white">اپلیکیشن کاربردی</span>
+<div class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</a>
+<!-- Category 5: AI -->
+<a class="group col-span-2 sm:col-span-1 flex items-center justify-between p-3.5 rounded-xl bg-emerald-950/20 hover:bg-emerald-900/30 border border-emerald-500/20 hover:border-emerald-400/60 transition-all" href="#videos">
+<span class="text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white">هوش مصنوعی</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- END: CategoryNavigation -->
+<!-- BEGIN: AboutMeSection -->
+<section class="py-24 relative" data-purpose="about-me" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="glass-panel rounded-3xl p-8 sm:p-12 border border-purple-500/25 relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left: Avatar & Gaming Desk graphic mockup -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<div class="w-full max-w-sm rounded-2xl p-1 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-400 shadow-neon-purple">
+<div class="bg-[#0b0c1e] rounded-[15px] p-6 text-center space-y-4">
+<!-- Cyberpunk Avatar Graphic -->
+<div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 p-1 flex items-center justify-center shadow-lg">
+<div class="w-full h-full bg-[#0a0a16] rounded-full flex items-center justify-center overflow-hidden">
+<span class="font-display font-black text-3xl text-cyan-300">TAHA</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">طاها | TAHA SLOW</h3>
+<p class="text-xs text-purple-300 font-medium mt-1">تولیدکننده محتوای گیم و تکنولوژی</p>
+</div>
+<div class="flex justify-center gap-2 pt-2">
+<span class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 text-[11px] font-medium">GTA Modder</span>
+<span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 text-[11px] font-medium">Tech Reviewer</span>
+<span class="px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 text-[11px] font-medium">Streamer</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Story Narrative -->
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                داستان من
+              </div>
+<h2 class="text-3xl sm:text-4xl font-black text-white">
+                من طاها هستم؛ خوش آمدید به <span class="text-cyan-400">TAHA SLOW</span>
+</h2>
+<p class="text-slate-300 leading-relaxed text-base">
+                سلام! من طاها هستم. و اینجا <span class="text-purple-400 font-bold">TAHA SLOW</span> جاییه که تکنولوژی و دنیای جذاب گیم رو با هم ترکیب می‌کنیم. هدف من اینه که بهترین، باکیفیت‌ترین و کاربردی‌ترین محتواها رو برای شما آماده کنم؛ از آموزش‌های تخصصی و بررسی موشکافانه جدیدترین گجت‌ها گرفته تا ترفندهای دنیای دیجیتال و مودهای ویژه بازی‌های خاطره‌انگیز.
+              </p>
+<p class="text-slate-400 text-sm leading-relaxed">
+                با من همراه باشید تا همواره یک قدم جلوتر از تحولات سریع فناوری و بازی‌ها حرکت کنید!
+              </p>
+<!-- Two Feature Pillars -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
+<div class="p-4 rounded-xl bg-purple-900/20 border border-purple-500/20 flex items-start gap-4">
+<div class="p-2.5 rounded-lg bg-purple-500/20 text-purple-300">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-white text-sm">عاشق تکنولوژی</h4>
+<p class="text-xs text-slate-400 mt-1">از جدیدترین هوش مصنوعی تا بررسی گجت‌های هوشمند و پیشرفته آینده</p>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-cyan-900/20 border border-cyan-500/20 flex items-start gap-4">
+<div class="p-2.5 rounded-lg bg-cyan-500/20 text-cyan-300">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="font-bold text-white text-sm">علاقه‌مند به گیم</h4>
+<p class="text-xs text-slate-400 mt-1">از بازی‌های کلاسیک و مودهای اختصاصی GTA تا بررسی بازی‌های نسل جدید</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AboutMeSection -->
+<!-- BEGIN: FeaturedVideosSection -->
+<section class="py-20 relative" data-purpose="featured-videos" id="videos">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<div class="inline-flex items-center gap-2 text-pink-400 text-xs font-bold uppercase tracking-wider mb-2">
+<span class="w-2 h-2 rounded-full bg-pink-500"></span>
+              جدیدترین محتواهای ویدیویی
+            </div>
+<h2 class="text-3xl sm:text-4xl font-black text-white flex items-center gap-3">
+<span>ویدیوهای منتخب</span>
+<span class="text-purple-400">TAHA SLOW</span>
+</h2>
+</div>
+<!-- Aparat Channel Button -->
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-pink-500/40 bg-pink-950/20 hover:bg-pink-900/40 text-pink-300 font-bold text-xs transition-all hover:scale-105 shadow-[0_0_15px_rgba(236,72,153,0.2)]" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<span>مشاهده همه ویدیوها در آپارات</span>
+<svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+<!-- Video Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+<!-- Video Card 1 -->
+<article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col group border border-purple-500/20" data-purpose="video-card">
+<a class="relative block overflow-hidden aspect-video bg-slate-900" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+<!-- Simulated Tech Thumbnail -->
+<div class="w-full h-full bg-gradient-to-tr from-purple-950 via-slate-900 to-indigo-900 flex items-center justify-center p-4">
+<span class="text-3xl">📱</span>
+</div>
+<span class="absolute bottom-2 left-2 z-20 font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-black/80 text-white border border-white/10">08:12</span>
+<!-- Play Icon Overlay -->
+<div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+<div class="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</a>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<h3 class="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                بررسی تخصصی گوشی جدید سامسونگ گلکسی
+              </h3>
+<div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+<span class="text-purple-300 font-medium">تکنولوژی</span>
+<span>۲.۵ هزار بازدید</span>
+</div>
+</div>
+</article>
+<!-- Video Card 2 -->
+<article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col group border border-purple-500/20" data-purpose="video-card">
+<a class="relative block overflow-hidden aspect-video bg-slate-900" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-gradient-to-tr from-cyan-950 via-slate-900 to-blue-900 flex items-center justify-center p-4">
+<span class="text-3xl">💻</span>
+</div>
+<span class="absolute bottom-2 left-2 z-20 font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-black/80 text-white border border-white/10">10:14</span>
+<div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+<div class="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</a>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<h3 class="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                بهترین لپ‌تاپ‌های گیمینگ ۲۰۲۵ با بودجه‌های مختلف
+              </h3>
+<div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+<span class="text-cyan-300 font-medium">گیمینگ</span>
+<span>۴.۱ هزار بازدید</span>
+</div>
+</div>
+</article>
+<!-- Video Card 3 -->
+<article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col group border border-purple-500/20" data-purpose="video-card">
+<a class="relative block overflow-hidden aspect-video bg-slate-900" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-gradient-to-tr from-pink-950 via-slate-900 to-rose-900 flex items-center justify-center p-4">
+<span class="text-3xl">🎧</span>
+</div>
+<span class="absolute bottom-2 left-2 z-20 font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-black/80 text-white border border-white/10">07:45</span>
+<div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+<div class="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</a>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<h3 class="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                معرفی بهترین هندزفری‌های بلوتوثی بازار (TWS)
+              </h3>
+<div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+<span class="text-pink-300 font-medium">گجت</span>
+<span>۳.۲ هزار بازدید</span>
+</div>
+</div>
+</article>
+<!-- Video Card 4 -->
+<article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col group border border-purple-500/20" data-purpose="video-card">
+<a class="relative block overflow-hidden aspect-video bg-slate-900" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-gradient-to-tr from-emerald-950 via-slate-900 to-teal-900 flex items-center justify-center p-4">
+<span class="text-3xl">🤖</span>
+</div>
+<span class="absolute bottom-2 left-2 z-20 font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-black/80 text-white border border-white/10">12:20</span>
+<div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+<div class="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</a>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<h3 class="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                آموزش هوش مصنوعی از صفر تا صد حرفه‌ای
+              </h3>
+<div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+<span class="text-emerald-300 font-medium">آموزش</span>
+<span>۶.۱ هزار بازدید</span>
+</div>
+</div>
+</article>
+<!-- Video Card 5 -->
+<article class="glass-panel glass-card-hover rounded-2xl overflow-hidden flex flex-col group border border-purple-500/20" data-purpose="video-card">
+<a class="relative block overflow-hidden aspect-video bg-slate-900" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-gradient-to-tr from-violet-950 via-slate-900 to-amber-950 flex items-center justify-center p-4">
+<span class="text-3xl">🚀</span>
+</div>
+<span class="absolute bottom-2 left-2 z-20 font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-black/80 text-white border border-white/10">09:16</span>
+<div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+<div class="w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+</a>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<h3 class="font-bold text-sm text-slate-100 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                معرفی برترین اپلیکیشن‌های کاربردی سال ۲۰۲۵
+              </h3>
+<div class="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-400">
+<span class="text-amber-300 font-medium">اپلیکیشن</span>
+<span>۵.۴ هزار بازدید</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: FeaturedVideosSection -->
+<!-- BEGIN: SpecialDownloadSection -->
+<!-- Exclusive requested section for Spider-Man 2 Mod for GTA San Andreas -->
+<section class="py-20 relative overflow-hidden" data-purpose="mod-download-section" id="download-mod">
+<!-- Glow ambient background -->
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-red-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="glass-panel border-2 border-red-500/30 rounded-3xl p-8 sm:p-12 shadow-[0_0_50px_rgba(239,68,68,0.2)]">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Information & Download details -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3.5 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  مود اختصاصی طاها اسلو
+                </span>
+<span class="px-3 py-1 rounded-full bg-cyan-600/20 border border-cyan-500/40 text-cyan-300 text-xs font-semibold">
+                  GTA San Andreas Mod
+                </span>
+<span class="px-3 py-1 rounded-full bg-purple-600/20 border border-purple-500/40 text-purple-300 text-xs font-semibold">
+                  Spider-Man 2
+                </span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                دانلود مود <span class="bg-gradient-to-r from-red-500 via-pink-500 to-cyan-400 bg-clip-text text-transparent">اسپایدرمن ۲</span> برای جی تی ای سن آندرس
+              </h2>
+<p class="text-slate-300 text-base leading-relaxed">
+                تجربه بی‌نظیر تاربازی و مبارزات مرد عنکبوتی ۲ در محیط جذاب و نوستالژیک GTA San Andreas! این مود شامل تمامی لباس‌های جدید اسپایدرمن، انیمیشن‌های بازسازی‌شده، قابلیت پرواز و پرتاب تار در خیابان‌های لوس سانتوس و گرافیک بهینه‌سازی شده می‌باشد.
+              </p>
+<!-- Mod Features List -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs text-slate-300">
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>نصب آسان و سریع</span>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>پشتیبانی از اندروید و PC</span>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>انیمیشن‌های واقعی Web Swing</span>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>شامل لباس سیمبیوت و پیتر پارکر</span>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>بدون باگ و کرش</span>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-black/40 border border-white/5">
+<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>نسخه کامل ZIP</span>
+</div>
+</div>
+<!-- Main Direct Download Action -->
+<div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-500 hover:from-red-500 hover:to-rose-500 text-white font-black text-base shadow-[0_0_25px_rgba(239,68,68,0.5)] transition-all transform hover:-translate-y-1" href="https://sharemods.com/7xuuddud57yc/com.rockstargames.gtasa.zip.html#google_vignette" rel="noopener noreferrer" target="_blank">
+<svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+<span>دانلود فایل مود (لینک مستقیم ShareMods)</span>
+</a>
+<div class="text-xs text-slate-400 flex items-center gap-2 font-mono">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span>نام فایل: com.rockstargames.gtasa.zip</span>
+</div>
+</div>
+</div>
+<!-- Mod Card Badge / Visual -->
+<div class="lg:col-span-4 flex items-center justify-center">
+<div class="w-full max-w-sm rounded-2xl bg-gradient-to-b from-red-600/40 via-purple-600/30 to-black/80 p-[2px] shadow-2xl">
+<div class="bg-[#0b0c1b] rounded-2xl p-6 text-center space-y-4">
+<div class="w-20 h-20 mx-auto rounded-2xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-4xl shadow-lg">
+                    🕷️
+                  </div>
+<div>
+<h4 class="font-bold text-lg text-white">GTA SA Spider-Man 2</h4>
+<p class="text-xs text-slate-400 font-mono mt-1">Package: com.rockstargames.gtasa</p>
+</div>
+<div class="border-t border-b border-white/10 py-3 space-y-2 text-xs">
+<div class="flex justify-between text-slate-400">
+<span>حجم فایل:</span>
+<span class="font-bold text-white font-mono">فشرده شده ZIP</span>
+</div>
+<div class="flex justify-between text-slate-400">
+<span>پلتفرم:</span>
+<span class="font-bold text-cyan-300">Android / PC</span>
+</div>
+<div class="flex justify-between text-slate-400">
+<span>وضعیت تست:</span>
+<span class="font-bold text-emerald-400">کاملاً تست شده و سالم ✅</span>
+</div>
+</div>
+<a class="block w-full py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-cyan-300 text-xs font-bold transition-colors" href="https://rubika.ir/Gtaslow" rel="noopener noreferrer" target="_blank">
+                    راهنمای نصب در کانال روبیکا @Gtaslow
+                  </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SpecialDownloadSection -->
+<!-- BEGIN: BrandCollaborationSection -->
+<section class="py-20 relative" data-purpose="brand-collaboration" id="services">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+<div class="inline-flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            فرصت‌های رشد و همکاری
+          </div>
+<h2 class="text-3xl sm:text-4xl font-black text-white">همکاری با برندها</h2>
+<p class="text-slate-400 text-sm leading-relaxed">
+            با هم، دنیای بهتری بسازیم. اگر شما هم به دنبال همکاری، تبلیغات با معرفی محصولات خود هستید، با ما در ارتباط باشید.
+          </p>
+</div>
+<!-- 3 Feature Cards for Collaboration -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Collaboration Card 1 -->
+<div class="glass-panel glass-card-hover rounded-2xl p-6 text-center space-y-4 border border-purple-500/20">
+<div class="w-14 h-14 mx-auto rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white">همکاری استراتژیک</h3>
+<p class="text-xs text-slate-400 leading-relaxed">رشد مشترک و هم‌افزایی بلندمدت با پلتفرم‌ها و شرکت‌های فعال در حوزه گیمینگ و تکنولوژی</p>
+</div>
+<!-- Collaboration Card 2 -->
+<div class="glass-panel glass-card-hover rounded-2xl p-6 text-center space-y-4 border border-pink-500/20">
+<div class="w-14 h-14 mx-auto rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white">تبلیغات هدفمند</h3>
+<p class="text-xs text-slate-400 leading-relaxed">معرفی برند و محصول شما در ویدیوها و کانال‌های اختصاصی با بیشترین بازخورد و تعامل</p>
+</div>
+<!-- Collaboration Card 3 -->
+<div class="glass-panel glass-card-hover rounded-2xl p-6 text-center space-y-4 border border-cyan-500/20">
+<div class="w-14 h-14 mx-auto rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shadow-lg">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white">تولید محتوا</h3>
+<p class="text-xs text-slate-400 leading-relaxed">تولید ویدیو، مقاله، تست و بررسی تخصصی سخت‌افزارها و بازی‌های جدید با استاندارد بالا</p>
+</div>
+</div>
+<div class="mt-10 text-center">
+<a class="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-cyan-400/50 bg-cyan-950/20 hover:bg-cyan-500 hover:text-black text-cyan-300 font-bold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.25)]" href="#contact">
+<span>درخواست همکاری</span>
+<svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+<!-- END: BrandCollaborationSection -->
+<!-- BEGIN: ContactAndCommunitySection -->
+<section class="py-20 relative" data-purpose="contact-and-newsletter" id="contact">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center glass-panel rounded-3xl p-8 sm:p-12 border border-purple-500/25">
+<!-- Left: Contact Form / Newsletter -->
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-300 text-xs font-semibold">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>در ارتباط باشیم</span>
+</div>
+<h2 class="text-3xl font-black text-white">
+              ارسال پیام، پیشنهاد یا انتقاد
+            </h2>
+<p class="text-slate-400 text-sm">
+              برای همکاری، پیشنهاد، انتقاد یا ارتباط مستقیم با من از طریق ایمیل یا فرم زیر اقدام کنید:
+            </p>
+<form class="flex flex-col sm:flex-row gap-3 pt-2" onsubmit="event.preventDefault(); alert('پیام شما با موفقیت ثبت شد!');">
+<div class="relative flex-1">
+<input class="w-full h-12 bg-black/50 border border-purple-500/30 rounded-xl px-4 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors" placeholder="ایمیل شما یا tahaslowgame@gmail.com" required="" type="email" value="tahaslowgame@gmail.com"/>
+</div>
+<button class="h-12 px-8 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-sm shadow-neon-cyan transition-all" type="submit">
+                ارسال
+              </button>
+</form>
+<div class="text-xs text-slate-400 flex items-center gap-2">
+<span>ایمیل رسمی ارتباط:</span>
+<a class="text-cyan-400 hover:underline font-mono" href="mailto:tahaslowgame@gmail.com">tahaslowgame@gmail.com</a>
+</div>
+</div>
+<!-- Right: Community Channels Links -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<!-- Aparat Channel Card -->
+<a class="p-4 rounded-2xl bg-black/40 border border-pink-500/30 hover:border-pink-500/70 transition-all flex items-center justify-between group" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+</div>
+<div>
+<div class="font-bold text-sm text-white">کانال آپارات طاها اسلو</div>
+<div class="text-[11px] text-slate-400 font-mono">aparat.com/Tahaslowgame</div>
+</div>
+</div>
+<svg class="w-5 h-5 text-slate-400 group-hover:text-pink-400 rtl:rotate-180 transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+<!-- Rubika Channel Card -->
+<a class="p-4 rounded-2xl bg-black/40 border border-cyan-500/30 hover:border-cyan-500/70 transition-all flex items-center justify-between group" href="https://rubika.ir/Gtaslow" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                  R
+                </div>
+<div>
+<div class="font-bold text-sm text-white">کانال روبیکا</div>
+<div class="text-[11px] text-cyan-300 font-mono">@Gtaslow</div>
+</div>
+</div>
+<svg class="w-5 h-5 text-slate-400 group-hover:text-cyan-400 rtl:rotate-180 transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ContactAndCommunitySection -->
+</main>
+<!-- BEGIN: MainFooter -->
+<footer class="border-t border-purple-500/20 bg-[#04050a] pt-12 pb-8" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+<!-- Footer Logo -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-purple-600 to-cyan-400 p-[2px]">
+<div class="w-full h-full bg-[#080918] rounded-[6px] flex items-center justify-center">
+<span class="font-display font-black text-lg text-purple-400">TS</span>
+</div>
+</div>
+<div>
+<div class="font-display font-bold text-base text-white tracking-wide">TAHA SLOW</div>
+<div class="text-[11px] text-slate-400">تکنولوژی، گیم، آینده بهتر</div>
+</div>
+</div>
+<!-- Quick Links -->
+<div class="flex flex-wrap justify-center gap-6 text-xs text-slate-400">
+<a class="hover:text-cyan-300 transition-colors" href="#">خانه</a>
+<a class="hover:text-cyan-300 transition-colors" href="#videos">ویدیوها</a>
+<a class="hover:text-pink-300 transition-colors" href="#download-mod">دانلود مود اسپایدرمن ۲</a>
+<a class="hover:text-cyan-300 transition-colors" href="#about">درباره من</a>
+<a class="hover:text-cyan-300 transition-colors" href="https://www.aparat.com/Tahaslowgame/short-videos" rel="noopener noreferrer" target="_blank">کانال آپارات</a>
+<a class="hover:text-cyan-300 transition-colors" href="https://rubika.ir/Gtaslow" rel="noopener noreferrer" target="_blank">روبیکا (@Gtaslow)</a>
+</div>
+<!-- Motto -->
+<div class="text-xs text-slate-400 flex items-center gap-1.5">
+<span>همیشه یک قدم جلوتر</span>
+<span class="text-red-500">❤️</span>
+</div>
+</div>
+<!-- Copyright Notice -->
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+<p>© 2025 TAHA SLOW. تمامی حقوق محفوظ است.</p>
+<p class="font-mono text-[11px]">Designed with Cyberpunk Aesthetic &amp; Tailwind CSS</p>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
